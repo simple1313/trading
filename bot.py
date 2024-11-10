@@ -7,11 +7,11 @@ load_dotenv()
 api_key = os.getenv("API_KEY")
 client_id = os.getenv("CLIENT_ID")
 # Removed the password since you're using OTP and PIN
-entry_price = float(os.getenv("ENTRY_PRICE"))
-option_type = os.getenv("OPTION_TYPE")
+# entry_price = float(os.getenv("ENTRY_PRICE"))
+# option_type = os.getenv("OPTION_TYPE")
 
 class OptionTradingStrategy:
-    def __init__(self, api_key, client_id, entry_price, option_type='call'):
+    def __init__(self, api_key, client_id):
         """
         Initialize the option trading strategy and connect to Angel One's SmartAPI.
         
