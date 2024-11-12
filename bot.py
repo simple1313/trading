@@ -1,4 +1,4 @@
-from Smartapi import SmartConnect
+from SmartApi import SmartConnect
 import os
 from dotenv import load_dotenv
 import time
