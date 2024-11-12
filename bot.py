@@ -1,4 +1,4 @@
-from Smartapi import SmartConnect
+# from Smartapi import SmartConnect
 import os
 from dotenv import load_dotenv
 import time
@@ -10,14 +10,14 @@ client_id = os.getenv("CLIENT_ID")
 
 class OptionTradingStrategy:
     def __init__(self, api_key, client_id, entry_price, option_type):
-        self.smart_connect = SmartConnect(api_key=api_key)
+        # self.smart_connect = SmartConnect(api_key=api_key)
 
         print("Login step: Please provide OTP and PIN.")
         otp = input("Enter OTP sent to your registered mobile/email: ")
         pin = input("Enter your 4-digit PIN: ")
 
         try:
-            data = self.smart_connect.generateSession(client_id, otp=otp, pin=pin)
+            # data = self.smart_connect.generateSession(client_id, otp=otp, pin=pin)
             self.access_token = data['data']['accessToken']
             self.refresh_token = data['data']['refreshToken']
             print("Successfully logged in.")
@@ -102,7 +102,7 @@ class OptionTradingStrategy:
         :return: The symbol token for the given tradingsymbol
         """
         try:
-            symbol_info = self.smart_connect.getSymbolInfo(tradingsymbol)
+            # symbol_info = self.smart_connect.getSymbolInfo(tradingsymbol)
             return symbol_info['data'][0]['symboltoken']
         except Exception as e:
             print(f"Error fetching symbol token: {e}")
@@ -133,7 +133,7 @@ class OptionTradingStrategy:
         }
 
         try:
-            order_id = self.smart_connect.placeOrder(order_params)
+            # order_id = self.smart_connect.placeOrder(order_params)
             print(f"Order placed. Order ID: {order_id}")
             return order_id
         except Exception as e:
@@ -150,7 +150,7 @@ class OptionTradingStrategy:
     def monitor_and_update(self, tradingsymbol):
         while True:
             try:
-                ltp_data = self.smart_connect.ltpData("NSE", tradingsymbol)
+                # ltp_data = self.smart_connect.ltpData("NSE", tradingsymbol)
                 current_price = ltp_data["data"]["ltp"]
                 print(f"Current Price: {current_price}")
                 self.update_stop_loss(current_price)
